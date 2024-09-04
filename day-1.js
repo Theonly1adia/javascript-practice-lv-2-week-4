@@ -48,6 +48,18 @@ function createTask(description, dueDate) {
 
 // TODO: Now, you try building your own book collection with different books!
 
+const myBookCollection = [];
+
+myBookCollection.push(createBook('The Coldest Winter Ever', 'Sister Souljah'));
+myBookCollection.push(createBook('I know Why the Caged Bird Sings', 'Maya Angelou'));
+myBookCollection.push(createBook('Becoming', 'Michelle Obama'));
+
+for (let i = 0; i< myBookCollection.length; i++) {
+    myBookCollection[i].showDetails();
+}
+
+
+
 
 // EXERCISE 2: Managing a Task List
 // INSTRUCTIONS: Create an empty array called `taskList`.
@@ -65,7 +77,15 @@ function createTask(description, dueDate) {
 // }
 
 // TODO: Now, you try building your own task list and marking each task as completed!
+ const taskList = [];
 
+ taskList.push(createTask('Schedule a dentist appointment' , '2024-08-22'));
+ taskList.push(createTask('Grocery Shopping' , '2024-08-23' ));
+ taskList.push(createTask('Finish Project', '2024-08-26'));
+
+ for (let i = 0; i < taskList.length; i++) {
+    taskList[i].completeTask();
+ }
 
 // EXERCISE 3: Updating Book Titles
 // INSTRUCTIONS: Create an empty array called `library`.
@@ -85,6 +105,17 @@ function createTask(description, dueDate) {
 
 // TODO: Now, you try updating the titles of your own library!
 
+const myLibrary = [];
+
+myLibrary.push(createBook('The Diary of a Young Girl', 'Anne Frank'));
+myLibrary.push(createBook('Narrative of the Life of Frederick Douglass, an American Slave', 'Frederick Douglas'));
+myLibrary.push(createBook('Hidden Figures', 'Margot Lee Shetterly'));
+
+ for (let i = 0; i < myLibrary.length; i++) {
+     myLibrary[i].title += ' - Second Edition';
+     myLibrary[i].showDetails();
+
+ }
 
 // EXERCISE 4: Rescheduling Tasks
 // INSTRUCTIONS: Create an empty array called `taskList`.
@@ -105,7 +136,18 @@ function createTask(description, dueDate) {
 // }
 
 // TODO: Now, you try rescheduling your own tasks!
+ const newTaskList = [];
 
+ newTaskList.push(createTask('Schedule a dentist appointment' , '2024-08-22'));
+ newTaskList.push(createTask('Grocery Shopping' , '2024-08-23' ));
+ newTaskList.push(createTask('Finish Project', '2024-08-26'));
+
+ for (let i = 0; i < newTaskList.length; i++) {
+    let oldDate = new Date(newTaskList[i].dueDate);
+    let newDate = new Date(oldDate.setDate(oldDate.getDate() + 1));
+    newTaskList[i].dueDate = newDate.toISOString().split ('T')[0];
+    console.log(`New due date for "${newTaskList[i].description}": ${newTaskList[i].dueDate}`);
+ }
 
 // EXERCISE 5: Counting Completed Tasks
 // INSTRUCTIONS: Create an empty array called `taskList`.
@@ -131,6 +173,25 @@ function createTask(description, dueDate) {
 // console.log(`Number of completed tasks: ${completedCount}`);
 
 // TODO: Now, you try counting the completed tasks in your own task list!
+
+const myNewTaskList = [];
+
+ myNewTaskList.push(createTask('Schedule a dentist appointment' , '2024-08-22'));
+ myNewTaskList.push(createTask('Grocery Shopping' , '2024-08-23' ));
+ myNewTaskList.push(createTask('Finish Project', '2024-08-26'));
+
+ myNewTaskList[0].completeTask();
+ myNewTaskList[1].completeTask();
+
+ let completedCount = 0;
+ for(let i = 0; i < myNewTaskList.length; i++){
+    if (myNewTaskList[i].completed) {
+        completedCount++;
+    }
+ }
+
+ console.log(`Number of completed tasks: ${completedCount}`);
+
 
 
 // Great job! You've completed the exercises.
